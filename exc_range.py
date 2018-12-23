@@ -28,4 +28,4 @@ class Range:
         if not 0 <= k < self._length:
             raise IndexError('index out of range')
 
-        return self._start + k * self._step 
+        return self._start + k * self._step

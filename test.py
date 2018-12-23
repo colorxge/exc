@@ -17,3 +17,5 @@ def range1(start, stop=None, step=1):
 
 a = range(18)
 print(a[2], a)
+
+str.split()
