@@ -20,7 +20,7 @@ def wordcount(path:str):
 
 
 if __name__ == '__main__':
-    d = wordcount('D:\BaiduNetdiskDownload\\08-Python week06\sample.txt')
+    d = wordcount('D:\sample.txt')
     i = 0
     for x in sorted(d.items(), key=lambda x: x[1], reverse=True):
         if i < 10:
