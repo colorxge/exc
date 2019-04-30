@@ -8,13 +8,13 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s %(thread)d %(message
 class ChatHandler(BaseRequestHandler):
     clients = {}
 
-    def setup(self):
+    def setup(self):   # 初始工作
         super().setup()
-        self.event = threading.Event()  # 初始工作
+        self.event = threading.Event()  
         self.clients[self.client_address] = self.request
 
-    def finish(self):
-        super().finish()    # 清理工作
+    def finish(self):   # 清理工作
+        super().finish()    
         self.clients.pop(self.client_address)
         self.event.set()
 
