@@ -1,9 +1,22 @@
 import logging
+
+
 LOGLEVEL = logging.INFO
-LOGFILE = 'test.log'
-LOGFORMAT = '%(asctime)s  LOGLEVEL:%(levelname)s  User:%(name)s  Msg:%(message)s'
-logging.basicConfig(filename=LOGFILE, level=LOGLEVEL, format=LOGFORMAT)
+LOGFILE = 'd:/tmp/test.log'
+LOGFORMAT = "%(asctime)s [%(name)s] msg:%(message)s"
+logging.basicConfig(format=LOGFORMAT, level=LOGLEVEL, filename=LOGFILE)
+# FORMAT = logging.Formatter(LOGFORMAT)
+logger = logging.getLogger('a')
+logger.info('aad')
 
 
-logging.info('test')
-# 2019-06-03 10:24:18,639  LOGLEVEL:INFO  User:root  Msg:test
+def getlogger(mod_name:str, filepath:str):
+    logger = logging.getLogger(mod_name)
+    logger.setLevel(logging.INFO)  # 单独设置
+    logger.propagate = False  # 阻止传送给父logger
+    handler = logging.FileHandler(filepath)
+    handler.setLevel(logging.INFO)
+    formatter = logging.Formatter(fmt="%(asctime)s [%(name)s %(funcName)s] %(message)s")
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+    return logger
