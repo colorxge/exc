@@ -20,3 +20,11 @@ def getlogger(mod_name:str, filepath:str):
     handler.setFormatter(formatter)
     logger.addHandler(handler)
     return logger
+
+
+### other .py
+import test
+
+
+logger = test.getlogger(__name__, 'd:/tmp/test.log')
+logger.info()
